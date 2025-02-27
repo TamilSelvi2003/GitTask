@@ -1,7 +1,15 @@
 import { useState } from "react";
 
 const SimpleForm = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", password: "", phone: "", age: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    phone: "",
+    age: "",
+    city: ""
+  });
+
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -10,8 +18,9 @@ const SimpleForm = () => {
 
   const validate = () => {
     let newErrors = {};
+
     if (!formData.name) newErrors.name = "Name is required";
-    
+
     if (!formData.email) {
       newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
@@ -20,7 +29,7 @@ const SimpleForm = () => {
 
     if (!formData.password) {
       newErrors.password = "Password is required";
-    } else if (formData.password.length < 7) {
+    } else if (formData.password.length < 6) {
       newErrors.password = "Password must be at least 6 characters long";
     }
 
@@ -32,8 +41,12 @@ const SimpleForm = () => {
 
     if (!formData.age) {
       newErrors.age = "Age is required";
-    } else if (!/^[1-9][0-9]?$|^120$/.test(formData.age)) {
+    } else if (!/^(?:[1-9][0-9]?|1[01][0-9]|120)$/.test(formData.age)) {
       newErrors.age = "Age must be a number between 1 and 120";
+    }
+
+    if (!formData.city) {
+      newErrors.city = "City is required";
     }
 
     return newErrors;
@@ -86,7 +99,7 @@ const SimpleForm = () => {
         </div>
         <div>
           <input
-            type="text"
+            type="number"
             name="phone"
             placeholder="Enter Phone Number"
             value={formData.phone}
@@ -96,13 +109,23 @@ const SimpleForm = () => {
         </div>
         <div>
           <input
-            type="text"
+            type="number"
             name="age"
             placeholder="Enter Age"
             value={formData.age}
             onChange={handleChange}
           />
           {errors.age && <p style={{ color: "red" }}>{errors.age}</p>}
+        </div>
+        <div>
+          <input
+            type="text"
+            name="city"
+            placeholder="Enter City"
+            value={formData.city}
+            onChange={handleChange}
+          />
+          {errors.city && <p style={{ color: "red" }}>{errors.city}</p>}
         </div>
         <button type="submit">Submit</button>
       </form>
