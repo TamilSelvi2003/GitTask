@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const SimpleForm = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", password: "", phone: "" });
+  const [formData, setFormData] = useState({ name: "", email: "", password: "", phone: "", age: "" });
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -28,6 +28,12 @@ const SimpleForm = () => {
       newErrors.phone = "Phone number is required";
     } else if (!/^\d{10}$/.test(formData.phone)) {
       newErrors.phone = "Phone number must be exactly 10 digits";
+    }
+
+    if (!formData.age) {
+      newErrors.age = "Age is required";
+    } else if (!/^[1-9][0-9]?$|^120$/.test(formData.age)) {
+      newErrors.age = "Age must be a number between 1 and 120";
     }
 
     return newErrors;
@@ -87,6 +93,16 @@ const SimpleForm = () => {
             onChange={handleChange}
           />
           {errors.phone && <p style={{ color: "red" }}>{errors.phone}</p>}
+        </div>
+        <div>
+          <input
+            type="text"
+            name="age"
+            placeholder="Enter Age"
+            value={formData.age}
+            onChange={handleChange}
+          />
+          {errors.age && <p style={{ color: "red" }}>{errors.age}</p>}
         </div>
         <button type="submit">Submit</button>
       </form>
