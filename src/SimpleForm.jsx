@@ -6,7 +6,6 @@ const SimpleForm = () => {
     email: "",
     password: "",
     phone: "",
-    age: "",
     city: ""
   });
 
@@ -39,11 +38,7 @@ const SimpleForm = () => {
       newErrors.phone = "Phone number must be exactly 10 digits";
     }
 
-    if (!formData.age) {
-      newErrors.age = "Age is required";
-    } else if (!/^(?:[1-9][0-9]?|1[01][0-9]|120)$/.test(formData.age)) {
-      newErrors.age = "Age must be a number between 1 and 120";
-    }
+  
 
     if (!formData.city) {
       newErrors.city = "City is required";
@@ -107,16 +102,7 @@ const SimpleForm = () => {
           />
           {errors.phone && <p style={{ color: "pink" }}>{errors.phone}</p>}
         </div>
-        <div>
-          <input
-            type="number"
-            name="age"
-            placeholder="Enter Age"
-            value={formData.age}
-            onChange={handleChange}
-          />
-          {errors.age && <p style={{ color: "pink" }}>{errors.age}</p>}
-        </div>
+      
         <div>
           <input
             type="text"
