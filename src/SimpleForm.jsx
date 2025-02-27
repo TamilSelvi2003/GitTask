@@ -75,7 +75,7 @@ const SimpleForm = () => {
             value={formData.name}
             onChange={handleChange}
           />
-          {errors.name && <p style={{ color: "red" }}>{errors.name}</p>}
+          {errors.name && <p style={{ color: "green" }}>{errors.name}</p>}
         </div>
         <div>
           <input
@@ -85,7 +85,7 @@ const SimpleForm = () => {
             value={formData.email}
             onChange={handleChange}
           />
-          {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
+          {errors.email && <p style={{ color: "green" }}>{errors.email}</p>}
         </div>
         <div>
           <input
@@ -95,7 +95,7 @@ const SimpleForm = () => {
             value={formData.password}
             onChange={handleChange}
           />
-          {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
+          {errors.password && <p style={{ color: "green" }}>{errors.password}</p>}
         </div>
         <div>
           <input
@@ -105,7 +105,7 @@ const SimpleForm = () => {
             value={formData.phone}
             onChange={handleChange}
           />
-          {errors.phone && <p style={{ color: "red" }}>{errors.phone}</p>}
+          {errors.phone && <p style={{ color: "green" }}>{errors.phone}</p>}
         </div>
         <div>
           <input
@@ -115,7 +115,7 @@ const SimpleForm = () => {
             value={formData.age}
             onChange={handleChange}
           />
-          {errors.age && <p style={{ color: "red" }}>{errors.age}</p>}
+          {errors.age && <p style={{ color: "green" }}>{errors.age}</p>}
         </div>
         <div>
           <input
@@ -125,7 +125,7 @@ const SimpleForm = () => {
             value={formData.city}
             onChange={handleChange}
           />
-          {errors.city && <p style={{ color: "red" }}>{errors.city}</p>}
+          {errors.city && <p style={{ color: "green" }}>{errors.city}</p>}
         </div>
         <button type="submit">Submit</button>
       </form>
